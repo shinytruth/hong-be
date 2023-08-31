@@ -41,6 +41,8 @@ public class JobMapperImpl implements JobMapper {
             }
         }
 
+        var status = job.getStatus() == "R" ? "요청" : job.getStatus() == "P" ? "진행중" : "완료";
+
         return JobDetailDTO.builder()
             .jobId(job.getId())
             .memberName(memberName)
@@ -51,6 +53,7 @@ public class JobMapperImpl implements JobMapper {
             .requestTime(job.getRequestTime())
             .silverPhoneNumber(silverPhoneNumber)
             .memberPhoneNumber(memberPhoneNumber)
+            .status(status)
             .build();
     }
 

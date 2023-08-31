@@ -18,5 +18,6 @@ public class JobDetailDTO {
     private Timestamp requestTime;
     private String silverPhoneNumber;
     private String memberPhoneNumber;
+    private String status;
 
 }
