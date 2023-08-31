@@ -20,6 +20,6 @@ public class Silver {
 
     private String address;
 
-    private String memberId;
+    private Long memberId;
 
 }

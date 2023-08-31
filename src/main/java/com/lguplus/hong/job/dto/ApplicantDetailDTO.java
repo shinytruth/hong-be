@@ -7,8 +7,8 @@ import lombok.Data;
 @Builder
 public class ApplicantDetailDTO {
 
-    private String jobId;
-    private String hongId;
+    private Long jobId;
+    private Long hongId;
     private String hongName;
     private String hongRate;
 

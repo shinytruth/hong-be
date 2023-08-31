@@ -14,8 +14,8 @@ public class Applicant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String jobId;
+    private Long jobId;
 
-    private String hongId;
+    private Long hongId;
 
 }

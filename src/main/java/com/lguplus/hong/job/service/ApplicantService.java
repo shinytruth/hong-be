@@ -19,7 +19,7 @@ public class ApplicantService {
 
     private final ApplicantMapper applicantMapper;
 
-    public List<ApplicantDetailDTO> getApplicant(@PathVariable String jobId) {
+    public List<ApplicantDetailDTO> getApplicant(Long jobId) {
         List<Applicant> applicantList = applicantRepository.findByJobId(jobId);
 
         return applicantList.stream()

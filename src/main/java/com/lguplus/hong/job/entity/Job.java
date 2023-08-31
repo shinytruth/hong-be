@@ -1,11 +1,11 @@
 package com.lguplus.hong.job.entity;
 
-import com.lguplus.hong.job.constant.JobStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.sql.Timestamp;
+import lombok.Builder;
 import lombok.Getter;
 
 @Entity
@@ -16,7 +16,7 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String categoryId;
+    private Long categoryId;
 
     private String content;
 
@@ -24,14 +24,27 @@ public class Job {
 
     private String status;
 
-    private String memberId;
+    private Long memberId;
 
-    private String silverId;
+    private Long silverId;
 
     private String requestAddress;
 
-    private String hongId;
+    private Long hongId;
 
-    private String agentId;
+    private Long agentId;
 
+    @Builder
+    public Job(Long categoryId, String content, Timestamp requestTime, String status, Long memberId,
+        Long silverId, String requestAddress, Long hongId, Long agentId) {
+        this.categoryId = categoryId;
+        this.content = content;
+        this.requestTime = requestTime;
+        this.status = status;
+        this.memberId = memberId;
+        this.silverId = silverId;
+        this.requestAddress = requestAddress;
+        this.hongId = hongId;
+        this.agentId = agentId;
+    }
 }

@@ -20,7 +20,7 @@ class CategoryRepositoryTest {
     @Test
     @Rollback(false)
     void createCategory() {
-        categoryRepository.save(new Category(UUID.randomUUID(), "공인인증서 발급", "공인인증서 발급을 도와드려요!",
+        categoryRepository.save(new Category( "공인인증서 발급", "공인인증서 발급을 도와드려요!",
             "https://mbti-hong-bucket.s3.ap-southeast-2.amazonaws.com/cate-01.png"));
         categoryRepository.save(new Category("울산페이", "울산페이 등록을 도와드려요!",
             "https://mbti-hong-bucket.s3.ap-southeast-2.amazonaws.com/cate-02.png"));

@@ -36,14 +36,14 @@ public class JobService {
                 .collect(Collectors.toList());
     }
 
-    public List<JobDetailDTO> getJobListByHongId(@RequestParam String hongId) {
+    public List<JobDetailDTO> getJobListByHongId(Long hongId) {
         List<Job> jobList = jobRepository.findByHongId(hongId);
         return jobList.stream()
                 .map(o -> jobMapper.mapToJobDetail(o))
                 .collect(Collectors.toList());
     }
 
-    public JobDetailDTO getJobDetail(@PathVariable String jobId) {
+    public JobDetailDTO getJobDetail(@PathVariable Long jobId) {
         Optional<Job> job = jobRepository.findById(jobId);
         if (job.isEmpty()) return null;
 

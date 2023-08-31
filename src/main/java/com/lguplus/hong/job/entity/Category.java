@@ -6,10 +6,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@AllArgsConstructor
+@NoArgsConstructor
 public class Category {
 
     @Id
@@ -22,5 +23,9 @@ public class Category {
 
     private String image;
 
-
+    public Category(String name, String description, String image) {
+        this.name = name;
+        this.description = description;
+        this.image = image;
+    }
 }

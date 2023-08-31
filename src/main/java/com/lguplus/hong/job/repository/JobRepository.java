@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface JobRepository extends JpaRepository<Job, String> {
+public interface JobRepository extends JpaRepository<Job, Long> {
 
-    List<Job> findByHongId(String hongId);
+    List<Job> findByHongId(Long hongId);
     List<Job> findByStatusIn(List<String> status);
 
 }
