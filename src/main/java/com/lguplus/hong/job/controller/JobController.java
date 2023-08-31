@@ -34,7 +34,7 @@ public class JobController {
         return jobService.getJobDetail(jobId);
     }
 
-    @PutMapping()
+    @PostMapping()
     public void createJob(@RequestBody JobCreateDTO jobCreateDTO) {
         jobService.createJob(jobCreateDTO);
     }
