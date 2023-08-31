@@ -67,12 +67,13 @@ public class JobService {
 
     @Transactional
     public void createJob(JobCreateDTO dto) {
+
+        System.out.println(dto);
         Silver silver = silverRepository.findByPhoneNumber(dto.getSilverPhoneNumber());
 
         jobRepository.save(Job.builder()
             .categoryId(dto.getCategoryId())
             .content(dto.getContent())
-            .requestTime(dto.getTimestamp())
             .requestAddress(dto.getRequestAddress())
             .silverId(silver.getId())
             .memberId(dto.getMemberId())
