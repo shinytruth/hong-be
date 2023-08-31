@@ -1,5 +1,6 @@
 package com.lguplus.hong.job.controller;
 
+import com.lguplus.hong.common.dto.DataResponse;
 import com.lguplus.hong.job.dto.ApplicantDetailDTO;
 import com.lguplus.hong.job.entity.Applicant;
 import com.lguplus.hong.job.service.ApplicantService;
@@ -14,9 +15,9 @@ public class ApplicantController {
 
     private final ApplicantService applicantService;
 
-    @GetMapping("/{applyId}")
-    public List<ApplicantDetailDTO> getApplicant(@PathVariable String applyId) {
-        return applicantService.getApplicant(Long.parseLong(applyId));
+    @GetMapping("/{jobId}")
+    public DataResponse getApplicant(@PathVariable String jobId) {
+        return new DataResponse(applicantService.getApplicant(Long.parseLong(jobId)));
     }
 
     @PostMapping()
