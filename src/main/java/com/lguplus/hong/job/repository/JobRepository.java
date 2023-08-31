@@ -10,6 +10,7 @@ import java.util.List;
 public interface JobRepository extends JpaRepository<Job, Long> {
 
     List<Job> findByHongId(Long hongId);
-    List<Job> findByStatusIn(List<String> status);
+    List<Job> findByHongIdAndStatus(Long hongId, String status);
+    List<Job> findByStatusIn(List<String> statusList);
 
 }

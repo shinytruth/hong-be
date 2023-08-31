@@ -14,10 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -43,14 +39,14 @@ public class JobService {
     }
 
     public List<JobDetailDTO> getRequestingJobList() {
-        List<Job> jobList = jobRepository.findByStatusIn(Arrays.asList("R"));
+        List<Job> jobList = jobRepository.findByStatusIn(Arrays.asList("R")); //R:요청
         return jobList.stream()
             .map(o -> jobMapper.mapToJobDetail(o))
             .collect(Collectors.toList());
     }
 
     public List<JobDetailDTO> getJobListByHongId(Long hongId) {
-        List<Job> jobList = jobRepository.findByHongId(hongId);
+        List<Job> jobList = jobRepository.findByHongIdAndStatus(hongId, "P"); //P:진행중
         return jobList.stream()
             .map(o -> jobMapper.mapToJobDetail(o))
             .collect(Collectors.toList());
@@ -73,7 +69,7 @@ public class JobService {
             .requestAddress(dto.getRequestAddress())
             .silverId(dto.getSilverId())
             .memberId(dto.getMemberId())
-            .status("접수")
+            .status("R") //R:요청
             .build());
     }
 
