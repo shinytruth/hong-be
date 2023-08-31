@@ -9,11 +9,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import com.lguplus.hong.user.entity.Silver;
+import com.lguplus.hong.user.repository.SilverRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Service
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class JobService {
 
     private final JobRepository jobRepository;
+    private final SilverRepository silverRepository;
 
     private final JobMapper jobMapper;
 
@@ -63,13 +66,15 @@ public class JobService {
     }
 
     @Transactional
-    public void createJob(@RequestBody JobCreateDTO dto) {
+    public void createJob(JobCreateDTO dto) {
+        Silver silver = silverRepository.findByPhoneNumber(dto.getSilverPhoneNumber());
+
         jobRepository.save(Job.builder()
             .categoryId(dto.getCategoryId())
             .content(dto.getContent())
             .requestTime(dto.getTimestamp())
             .requestAddress(dto.getRequestAddress())
-            .silverId(dto.getSilverId())
+            .silverId(silver.getId())
             .memberId(dto.getMemberId())
             .status("R")
             .build());

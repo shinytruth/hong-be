@@ -12,7 +12,7 @@ public class JobCreateDTO {
     private String content;
     private Timestamp timestamp;
     private Long memberId;
-    private Long silverId;
+    private String silverPhoneNumber;
     private String requestAddress;
 
 }
