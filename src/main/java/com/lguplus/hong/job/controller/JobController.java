@@ -1,5 +1,6 @@
 package com.lguplus.hong.job.controller;
 
+import com.lguplus.hong.common.dto.CommonResponse;
 import com.lguplus.hong.common.dto.DataResponse;
 import com.lguplus.hong.job.dto.JobCreateDTO;
 import com.lguplus.hong.job.dto.JobDetailDTO;
@@ -49,8 +50,9 @@ public class JobController {
     }
 
     @PostMapping()
-    public void createJob(@RequestBody JobCreateDTO jobCreateDTO) {
+    public CommonResponse createJob(@RequestBody JobCreateDTO jobCreateDTO) {
         jobService.createJob(jobCreateDTO);
+        return CommonResponse.ok();
     }
 
     @PostMapping("/assign")

@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -61,6 +62,7 @@ public class JobService {
         return jobMapper.mapToJobDetail(job.get());
     }
 
+    @Transactional
     public void createJob(@RequestBody JobCreateDTO dto) {
         jobRepository.save(Job.builder()
             .categoryId(dto.getCategoryId())
@@ -69,7 +71,7 @@ public class JobService {
             .requestAddress(dto.getRequestAddress())
             .silverId(dto.getSilverId())
             .memberId(dto.getMemberId())
-            .status("R") //R:요청
+            .status("R")
             .build());
     }
 
