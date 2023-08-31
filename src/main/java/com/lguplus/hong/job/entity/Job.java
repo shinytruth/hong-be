@@ -7,9 +7,11 @@ import jakarta.persistence.Id;
 import java.sql.Timestamp;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Job {
 
     @Id
@@ -46,5 +48,10 @@ public class Job {
         this.requestAddress = requestAddress;
         this.hongId = hongId;
         this.agentId = agentId;
+    }
+
+    public void modifyStatusAndHongId(String status, Long hongId) {
+        this.status = status;
+        this.hongId = hongId;
     }
 }

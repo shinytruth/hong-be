@@ -2,15 +2,11 @@ package com.lguplus.hong.job.controller;
 
 import com.lguplus.hong.job.dto.JobCreateDTO;
 import com.lguplus.hong.job.dto.JobDetailDTO;
+import com.lguplus.hong.job.entity.Job;
 import com.lguplus.hong.job.service.JobService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/jobs")
@@ -44,8 +40,9 @@ public class JobController {
         jobService.createJob(jobCreateDTO);
     }
 
-    public void modifyJobStatus() {
-
+    @PostMapping("/assign")
+    public Job assignJobToHong(@RequestParam String jobId, @RequestParam String hongId) {
+        return jobService.assignJobToHong(Long.parseLong(jobId), Long.parseLong(hongId));
     }
 
 

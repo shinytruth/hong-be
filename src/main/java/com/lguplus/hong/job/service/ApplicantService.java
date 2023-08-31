@@ -27,4 +27,12 @@ public class ApplicantService {
                 .collect(Collectors.toList());
     }
 
+    public Applicant applyJob(Long jobId, Long hongId) {
+        Applicant applicant = Applicant.builder()
+                .jobId(jobId)
+                .hongId(hongId)
+                .build();
+        return applicantRepository.save(applicant);
+    }
+
 }

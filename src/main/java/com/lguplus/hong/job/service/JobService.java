@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -52,6 +51,12 @@ public class JobService {
 
     public void createJob(@RequestBody JobCreateDTO jobCreateDTO) {
 
+    }
+
+    public Job assignJobToHong(Long jobId, Long hongId) {
+        Job job = jobRepository.findById(jobId).get();
+        job.modifyStatusAndHongId("P", hongId); //P:진행중
+        return jobRepository.save(job);
     }
 
 }
