@@ -15,8 +15,8 @@ public class CategoryController {
 
     private final CategoryRepository categoryRepository;
 
-    @GetMapping("")
-    public DataResponse getApplicant(@PathVariable String jobId) {
+    @GetMapping()
+    public DataResponse getCategory() {
         return new DataResponse(categoryRepository.findAll());
     }
 
