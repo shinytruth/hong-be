@@ -19,5 +19,6 @@ public class JobDetailDTO {
     private String silverPhoneNumber;
     private String memberPhoneNumber;
     private String status;
+    private Long hongId;
 
 }

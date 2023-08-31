@@ -54,6 +54,7 @@ public class JobMapperImpl implements JobMapper {
             .silverPhoneNumber(silverPhoneNumber)
             .memberPhoneNumber(memberPhoneNumber)
             .status(status)
+            .hongId(job.getHongId())
             .build();
     }
 
