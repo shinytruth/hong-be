@@ -2,17 +2,19 @@ package com.lguplus.hong.job.entity;
 
 import com.lguplus.hong.job.constant.JobStatus;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-
 import java.sql.Timestamp;
+import lombok.Getter;
 
 @Entity
 @Getter
 public class Job {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String categoryId;
 
