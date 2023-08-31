@@ -1,6 +1,5 @@
 package com.lguplus.hong.user.entity;
 
-import com.lguplus.hong.user.constant.StaffRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Getter;
@@ -14,6 +13,6 @@ public class Staff {
 
     private String name;
 
-    private StaffRole role;
+    private String role;
 
 }

@@ -15,17 +15,17 @@ public class JobController {
     private final JobService jobService;
 
     @GetMapping("/agent")
-    public List<JobDTO> getIncompleteJobList() {
+    public List<JobDetailDTO> getIncompleteJobList() {
         return jobService.getIncompleteJobList();
     }
 
     @GetMapping("/hong")
-    public List<JobDTO> getRequestingJobList() {
+    public List<JobDetailDTO> getRequestingJobList() {
         return jobService.getRequestingJobList();
     }
 
     @GetMapping("/hong/{hongId}")
-    public List<JobDTO> getJobListByHongId(@PathVariable String hongId) {
+    public List<JobDetailDTO> getJobListByHongId(@PathVariable String hongId) {
         return jobService.getJobListByHongId(hongId);
     }
 
@@ -37,6 +37,10 @@ public class JobController {
     @PutMapping()
     public void createJob(@RequestBody JobCreateDTO jobCreateDTO) {
         jobService.createJob(jobCreateDTO);
+    }
+
+    public void modifyJobStatus() {
+
     }
 
 

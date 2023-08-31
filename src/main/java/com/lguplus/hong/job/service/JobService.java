@@ -2,17 +2,16 @@ package com.lguplus.hong.job.service;
 
 import com.lguplus.hong.job.dto.*;
 import com.lguplus.hong.job.entity.Job;
-import com.lguplus.hong.job.repository.CategoryRepository;
 import com.lguplus.hong.job.repository.JobRepository;
-import com.lguplus.hong.user.repository.MemberRepository;
-import com.lguplus.hong.user.repository.StaffRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,31 +19,35 @@ import java.util.stream.Collectors;
 public class JobService {
 
     private final JobRepository jobRepository;
-    private final CategoryRepository categoryRepository;
-    private final MemberRepository memberRepository;
-    private final StaffRepository staffRepository;
 
-    public List<JobDTO> getIncompleteJobList() {
-        return null;
-    }
+    private final JobMapper jobMapper;
 
-    public List<JobDTO> getRequestingJobList() {
-        return null;
-    }
-
-    public List<JobDTO> getJobListByHongId(@RequestParam String hongId) {
-        List<Job> jobList = jobRepository.findByHongId(hongId);
+    public List<JobDetailDTO> getIncompleteJobList() {
+        List<Job> jobList = jobRepository.findByStatusIn(Arrays.asList("R", "P"));
         return jobList.stream()
-                .map(o -> mapJobToJobDto(o))
+                .map(o -> jobMapper.mapToJobDetail(o))
                 .collect(Collectors.toList());
     }
 
-    private JobDTO mapJobToJobDto(Job job) {
-        return null;
+    public List<JobDetailDTO> getRequestingJobList() {
+        List<Job> jobList = jobRepository.findByStatusIn(Arrays.asList("R"));
+        return jobList.stream()
+                .map(o -> jobMapper.mapToJobDetail(o))
+                .collect(Collectors.toList());
+    }
+
+    public List<JobDetailDTO> getJobListByHongId(@RequestParam String hongId) {
+        List<Job> jobList = jobRepository.findByHongId(hongId);
+        return jobList.stream()
+                .map(o -> jobMapper.mapToJobDetail(o))
+                .collect(Collectors.toList());
     }
 
     public JobDetailDTO getJobDetail(@PathVariable String jobId) {
-        return null;
+        Optional<Job> job = jobRepository.findById(jobId);
+        if (job.isEmpty()) return null;
+
+        return jobMapper.mapToJobDetail(job.get());
     }
 
     public void createJob(@RequestBody JobCreateDTO jobCreateDTO) {

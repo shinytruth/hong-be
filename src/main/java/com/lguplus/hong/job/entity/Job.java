@@ -18,9 +18,9 @@ public class Job {
 
     private String content;
 
-    private Timestamp timestamp;
+    private Timestamp requestTime;
 
-    private JobStatus status;
+    private String status;
 
     private String memberId;
 
