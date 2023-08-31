@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface JobRepository extends JpaRepository {
+public interface JobRepository extends JpaRepository<Job, String> {
 
     List<Job> findByHongId(String hongId);
 
