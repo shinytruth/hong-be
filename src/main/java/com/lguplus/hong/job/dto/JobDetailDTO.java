@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Builder
 public class JobDetailDTO {
 
-    private String jobId;
+    private Long jobId;
     private String memberName;
     private String categoryName;
     private String hongName;

@@ -1,6 +1,5 @@
 package com.lguplus.hong.job.dto;
 
-import com.lguplus.hong.job.constant.JobStatus;
 import com.lguplus.hong.job.entity.Category;
 import com.lguplus.hong.job.entity.Job;
 import com.lguplus.hong.job.repository.CategoryRepository;
@@ -10,10 +9,9 @@ import com.lguplus.hong.user.entity.Staff;
 import com.lguplus.hong.user.repository.MemberRepository;
 import com.lguplus.hong.user.repository.SilverRepository;
 import com.lguplus.hong.user.repository.StaffRepository;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -42,16 +40,16 @@ public class JobMapperImpl implements JobMapper {
         }
 
         return JobDetailDTO.builder()
-                .jobId(job.getId())
-                .memberName(memberName)
-                .categoryName(categoryName)
-                .hongName(hongName)
-                .content(job.getContent())
-                .requestAddress(job.getRequestAddress())
-                .requestTime(job.getRequestTime())
-                .silverPhoneNumber(silverPhoneNumber)
-                .memberPhoneNumber(memberPhoneNumber)
-                .build();
+            .jobId(job.getId())
+            .memberName(memberName)
+            .categoryName(categoryName)
+            .hongName(hongName)
+            .content(job.getContent())
+            .requestAddress(job.getRequestAddress())
+            .requestTime(job.getRequestTime())
+            .silverPhoneNumber(silverPhoneNumber)
+            .memberPhoneNumber(memberPhoneNumber)
+            .build();
     }
 
 }
