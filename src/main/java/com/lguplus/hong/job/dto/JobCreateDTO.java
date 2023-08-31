@@ -8,11 +8,11 @@ import java.sql.Timestamp;
 @Data
 public class JobCreateDTO {
 
-    private String categoryId;
+    private Long categoryId;
     private String content;
     private Timestamp timestamp;
-    private String memberId;
-    private String silverId;
+    private Long memberId;
+    private Long silverId;
     private String requestAddress;
 
 }

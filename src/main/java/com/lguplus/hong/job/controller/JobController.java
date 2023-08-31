@@ -1,12 +1,19 @@
 package com.lguplus.hong.job.controller;
 
+import com.lguplus.hong.common.dto.DataResponse;
 import com.lguplus.hong.job.dto.JobCreateDTO;
 import com.lguplus.hong.job.dto.JobDetailDTO;
 import com.lguplus.hong.job.entity.Job;
 import com.lguplus.hong.job.service.JobService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/jobs")
@@ -14,6 +21,12 @@ import org.springframework.web.bind.annotation.*;
 public class JobController {
 
     private final JobService jobService;
+
+    @GetMapping()
+    public DataResponse getAll() {
+        return new DataResponse(jobService.getAll());
+    }
+
 
     @GetMapping("/agent")
     public List<JobDetailDTO> getIncompleteJobList() {

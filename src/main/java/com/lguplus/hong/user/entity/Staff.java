@@ -4,10 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Staff {
 
     @Id
@@ -20,4 +23,9 @@ public class Staff {
 
     private String rate;
 
+    public Staff(String name, String role, String rate) {
+        this.name = name;
+        this.role = role;
+        this.rate = rate;
+    }
 }

@@ -33,10 +33,12 @@ public class JobMapperImpl implements JobMapper {
         Silver silver = silverRepository.findById(job.getSilverId()).get();
         String silverPhoneNumber = silver.getPhoneNumber();
 
-        Optional<Staff> staff = staffRepository.findById(job.getHongId());
         String hongName = "";
-        if (staff.isPresent()) {
-            hongName = staff.get().getName();
+        if (job.getHongId() != null) {
+            Optional<Staff> staff = staffRepository.findById(job.getHongId());
+            if (staff.isPresent()) {
+                hongName = staff.get().getName();
+            }
         }
 
         return JobDetailDTO.builder()

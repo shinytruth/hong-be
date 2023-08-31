@@ -14,9 +14,9 @@ public class ApplicantController {
 
     private final ApplicantService applicantService;
 
-    @GetMapping("/{jobId}")
-    public List<ApplicantDetailDTO> getApplicant(@PathVariable String jobId) {
-        return applicantService.getApplicant(Long.parseLong(jobId));
+    @GetMapping("/{applyId}")
+    public List<ApplicantDetailDTO> getApplicant(@PathVariable String applyId) {
+        return applicantService.getApplicant(Long.parseLong(applyId));
     }
 
     @PostMapping()
