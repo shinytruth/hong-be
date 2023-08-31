@@ -15,4 +15,6 @@ public class Staff {
 
     private String role;
 
+    private String rate;
+
 }
