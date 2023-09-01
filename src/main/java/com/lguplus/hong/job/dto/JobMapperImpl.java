@@ -41,6 +41,9 @@ public class JobMapperImpl implements JobMapper {
             }
         }
 
+        var status =
+            "R".equals(job.getStatus()) ? "요청" : "P".equals(job.getStatus()) ? "진행중" : "완료";
+
         return JobDetailDTO.builder()
             .jobId(job.getId())
             .memberName(memberName)
